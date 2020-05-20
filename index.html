@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your own online music festival based on your most played artists on Spotify">
+    <title>Couchella</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div><img src="https://image.flaticon.com/icons/svg/2890/2890408.svg"  width="50" height="50"></div>
+        <div class="name"><h1 class="app-name">Couchella</h1></div>
+    </nav>
+
+    <section class="sign-in">
+        <div class="intro">
+            Create your own online music festival based on your most played artists on Spotify
+        </div>
+        <div class="login-container">
+            <a id="spotify-login" href='https://accounts.spotify.com/authorize?client_id=d3c3efee0eb04d5ea828f52d23aec551&response_type=token&redirect_uri=http://127.0.0.1:5500/spotify-music-festival/index.html'>Log in with Spotify</a>
+        </div>
+    </section>
+    
+    <section class="flex-container">
+        <div class="lineup">
+            <div class="lineup-header">
+                <h5 style='margin-block-start: 1em; margin-block-end: 1em;'>Your Spotify account presents<br></h5>
+                <h2><b>COUCHELLA</b><br></h2>
+                Online Music Festival
+            </div>
+            <div class="user-lineup">Your personal lineup goes here</div>
+        </div>
+    </section>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+

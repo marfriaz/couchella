@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+  }
+  
+body {
+    font-family: "Open Sans",
+    sans-serif; 
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+    color: white;
+    background: linear-gradient(to left, #65c9b7, #cfb98a 33%, #9c85b9 100%);
+}
+
+.navbar {
+    /* background: linear-gradient(to left, #65c9b7, #cfb98a 33%, #9c85b9 100%); */
+    background-color:  #9c85b9;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.name {
+    position: relative;
+    text-align: left;
+    left: 3%;
+}
+
+.logo {
+    position: relative;
+
+}
+
+
+
+h1 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+
+
+.intro {
+    margin: 5% 10% 3% 10%;
+}
+
+.sign-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5% 0 5%;
+}
+
+#spotify-login {
+    background-color: #1DB954;
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 500px;
+    border: 0;
+    padding: 10px 25px;
+}
+
+
+
+
+
+
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    /* Edit this height */
+    height: 1000px;
+}
+
+.lineup {
+    margin-top: 5%;
+    background: url(images/lineup-background.png) no-repeat;
+    background-size: cover;
+    height:80%;
+    width: 90%;
+    color: white;
+}
+
+.lineup-header {
+    position: relative;
+    top: 5%;
+}
+
+.user-lineup{
+    position: relative;
+    top: 10%;
+}
+
+
+
+
+@media (min-width: 750px){
+    #spotify-login {
+        font-size: 14px;
+        border-radius: 500px;
+        border: 0;
+        padding: 17px 48px;
+    }
+
+    .name {
+
+        left: 1%;
+    }
+
+}
