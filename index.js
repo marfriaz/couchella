@@ -1,71 +1,73 @@
+'use strict';
 
 
+//Spotify API: Authentication
+
+var accessTokenValue = '';
+
+window.onload = function () {
+  console.log('document loaded');
+  const accessToken = location.hash.substring(1).split('&').map(param => param.split('='))[0][0];
+  if (accessToken) {
+    accessTokenValue = location.hash.substring(1).split('&').map(param => param.split('='))[0][1];
+
+    //   var authObj={}; 
+    //   authObj[accessToken]=location.hash.substring(1).split('&').map(param=>param.split('='))[0][1];
+    // return authObj; 
+    getArtists();
+    $('.next-page').show();
+
+  }
+}
+
+// Spotify API: get artists
 const baseURL = 'https://api.spotify.com/v1/me/top/artists';
 
 
-const hash = window.location.href;
-
-console.log(hash)
-
-if 
-
-
-
-
-
-
 function formatQueryParams(params) {
-    const queryItems = Object.keys(params)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return queryItems.join('&');
-  }
-  
-  
+  const queryItems = Object.keys(params)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+  return queryItems.join('&');
+}
+
+
 function getArtists() {
-    const params = {
-        limit: 12,
-        time_range: long_term,
-    };
+  console.log(accessTokenValue);
+  const params = {
+    limit: 12,
+    time_range: 'long_term',
+  };
 
-    const queryString = formatQueryParams(params)
-    const url = baseURL + '?' + queryString;
-  
-    console.log(baseURL);
-  
-    const options = {
-      headers: new Headers({
-        "Authorization": access_token})
-    };
-  
-    fetch(url)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error(response.statusText);
-      })
-      .then(responseJson => displayResults(responseJson, maxResults))
-      .catch(err => {
-        $('#js-error-message').text(`Something went wrong: ${err.message}`);
-      });
-  }
-  
+  const queryString = formatQueryParams(params)
+  const url = baseURL + '?' + queryString;
 
+  console.log(baseURL);
 
+  const options = {
+    headers: new Headers({
+      'Authorization': 'Bearer ' + accessTokenValue
+    })
+  };
 
+  fetch(url, options)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => {console.log(responseJson);
+      // displayResults(responseJson) 
+    })
+    .catch(err => {
+      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+    });
 
-
-
+}
 
 
 
-
-
-
-
-
-
- 
+// Spotify API: get authentication and login: fix the Request URI to fit this:
 
 // const loginBaseURL = 'https://accounts.spotify.com/authorize';
 // const clientID = 'd3c3efee0eb04d5ea828f52d23aec551';
@@ -97,10 +99,10 @@ function getArtists() {
 //         response_type: 'token',
 //         redirect_uri: 'https://www.google.com',
 //     };
-    
+
 //     const queryString = formatQueryParams(params);
 //     const loginURL = loginBaseURL + '?' + queryString;
-    
+
 //     console.log(loginURL);
 
 //     fetch(loginURL)
@@ -130,5 +132,97 @@ function getArtists() {
 //         getLogin();
 //     });
 // }
-      
+
 // $(watchForm);
+
+
+
+
+
+
+
+
+
+
+
+
+// YOUTUBE API: SEARCH
+
+const apiKey = 'AIzaSyCrNFDWvZ5nEcTWr0kWf9CYCjbZblaNKs8';
+const searchURL = 'https://www.googleapis.com/youtube/v3/search';
+
+
+function formatQueryParams(params) {
+  const queryItems = Object.keys(params)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+  return queryItems.join('&');
+}
+
+function displayResults(responseJson) {
+  // if there are previous results, remove them
+  console.log(responseJson);
+  $('#results-list').empty();
+  // iterate through the items array
+  for (let i = 0; i < responseJson.items.length; i++) {
+    // for each video object in the items 
+    //array, add a list item to the results 
+    //list with the video title, description,
+    //and thumbnail
+    $('#results-list').append(
+      `<li><h3 class="artist-name">$</h3>
+       <iframe src="https://www.youtube.com/embed/${responseJson.items[i].id.videoId}" name="The Weeknd" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+       </li>`
+    )
+  };
+  //display the results section  
+  $('#results').removeClass('hidden');
+};
+
+function getYouTubeVideos(query, maxResults = 10) {
+  const params = {
+    key: apiKey,
+    q: query,
+    part: 'snippet',
+    maxResults,
+    type: 'video'
+  };
+  const queryString = formatQueryParams(params)
+  const url = searchURL + '?' + queryString;
+
+  console.log(url);
+
+  fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => displayResults(responseJson))
+    .catch(err => {
+      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+    });
+}
+
+function watchForm() {
+  $('form').submit(event => {
+    event.preventDefault();
+    const searchTerm = $('#js-search-term').val();
+    const maxResults = $('#js-max-results').val();
+    getYouTubeVideos(searchTerm, maxResults);
+  });
+}
+
+$(watchForm);
+
+
+
+
+
+
+
+// YOUTUBE API: VIDEOS
+
+
+
+const videoURL = 'https://www.youtube.com/embed/VIDEO_ID';
