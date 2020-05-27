@@ -149,7 +149,7 @@ function displayLineup(responseJson) {
 
 // YOUTUBE API: SEARCH
 
-const apiKey = 'AIzaSyBzqtrNh_8CIW0hD3tjNPoaatt7a5toR5A';
+const apiKey = 'AIzaSyAJWZSpZ9AhqlYkso42fSUdWXQQcJvAjuk';
 const searchURL = 'https://www.googleapis.com/youtube/v3/search';
 
 
