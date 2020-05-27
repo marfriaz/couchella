@@ -87,7 +87,7 @@ h1, h5, h2, h3, h4 {
 
 .lineup {
     margin-top: 5%;
-    background: url(images/lineup-background.png) no-repeat;
+    background: url("Images/lineup-background.png") no-repeat;
     background-size: cover;
     height:90%;
     width: 90%;
