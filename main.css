@@ -17,6 +17,19 @@ body {
     background: linear-gradient(to left, #65c9b7, #cfb98a 33%, #9c85b9 100%);
 }
 
+
+h3 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h1, h5, h2, h3, h4 {
+    margin-block-start: 0; margin-block-end: 0;
+}
+
 .navbar {
     /* background: linear-gradient(to left, #65c9b7, #cfb98a 33%, #9c85b9 100%); */
     background-color:  #9c85b9;
@@ -29,7 +42,7 @@ body {
 .name {
     position: relative;
     text-align: left;
-    left: 3%;
+    left: 1%;
 }
 
 .logo {
@@ -37,15 +50,9 @@ body {
 
 }
 
-h1 {
-    margin-block-start: 0;
-    margin-block-end: 0;
-  }
-
-
-
 .intro {
-    margin: 5% 10% 3% 10%;
+    margin: 5% 0 3% 0;
+    font-size: .90em;
 }
 
 .sign-in {
@@ -62,11 +69,13 @@ h1 {
     font-size: 14px;
     border-radius: 500px;
     border: 0;
-    padding: 10px 25px;
+    padding: 12px 27px;
 }
 
 
-
+.videos-intro {
+    margin-top: 2%;
+}
 
 
 .lineup-container {
@@ -85,30 +94,17 @@ h1 {
     color: white;
 }
 
-h5, h2, h3, h4 {
-    margin-block-start: 0; margin-block-end: 0;
-}
+
+
 
 .lineup-header {
-    position: relative;
-    top: 5%;
+    margin-top: 5%;
 }
 
 .user-lineup{
-    position: relative;
-    top: 10%;
-    
+    margin: 5% 2% 5% 2%;
 }
 
-.headliners {
-    font-size: ;
-}
-
-h3.headliners {
-    font-size: 1.5em;
-    margin-block-start: 1px; 
-    margin-block-end: 1px; 
-}
 
 .videos-intro {
     width: 90%;
@@ -136,17 +132,44 @@ h3.headliners {
 }
 
 
+
 li,
 iframe {
     width: 100%;
     height: 100%;
 }
 
+iframe {
+    height: 200px;
+}
+
+
+
 
 
 
 
 @media (min-width: 750px){
+
+    .presented {
+        font-size: 1.2em;
+    }
+
+
+    h3.headliners {
+        font-size: 4em;
+    }
+    
+    h4.headliners,
+    .couchella {
+        font-size: 3em;
+    }
+
+    .intro {
+        margin-top: 2%;
+        font-size: 1.2em;
+    }
+
     #spotify-login {
         font-size: 14px;
         border-radius: 500px;
@@ -154,16 +177,85 @@ iframe {
         padding: 17px 48px;
     }
 
-    .name {
-        left: 1%;
-    }
-
     .lineup-container {
-        height: 1000px;
+        min-height: 1000px;
+        height: 100%
     }
 
     .lineup {
-        width: 50%;
+        width: 70%;
+        min-height: 900px;
     }
+
+
+    li {
+        width: 80%;
+        height: 100%;
+    }
+    
+    iframe {
+        width: 100%;
+        height: 600px;
+    }
+    
+
+}
+
+
+
+
+
+@media (min-width: 1100px){
+
+.intro {
+    font-size: 1.5em;
+}
+
+.presented {
+    font-size: 1.2em;
+}
+
+
+h3.headliners {
+    font-size: 4em;
+}
+
+h4.headliners,
+.couchella {
+    font-size: 3em;
+}
+
+#spotify-login {
+    font-size: 14px;
+    border-radius: 500px;
+    border: 0;
+    padding: 17px 48px;
+}
+
+.lineup-container {
+    min-height: 1000px;
+    height: 100%
+}
+
+.lineup {
+    width: 55%;
+    min-height: 900px;
+}
+
+
+li {
+    width: 80%;
+    height: 100%;
+}
+
+iframe {
+    width: 100%;
+    height: 600px;
+}
+
+
+
+
+
 
 }

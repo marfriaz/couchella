@@ -131,14 +131,14 @@ function displayLineup(responseJson) {
       `
     );
     
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 12; i++) {
       let query= responseJson.items[i].name + ' concert';
       let headlinerName= responseJson.items[i].name;
 
 
 
       // COMMENT OUT TO NOW WASTE FETCH
-      // getYouTubeVideos(query, headlinerName)
+      getYouTubeVideos(query, headlinerName)
     };
 
 };
@@ -201,11 +201,8 @@ function displayVideos(responseJson, headlinerName) {
   )
   
   //display the results section  
-  $('#video-results').removeClass('hidden');
+  $('.videos-intro').removeClass('hidden');
 };
-
-
-
 
 
 
