@@ -19,9 +19,6 @@
             Create your own online music festival based on your most played artists on Spotify
             </div>
         <div class="login-container">
-            <a id="spotify-login" href='https://accounts.spotify.com/authorize?scope=user-top-read&client_id=d3c3efee0eb04d5ea828f52d23aec551&response_type=token&redirect_uri=https://marfriaz.github.io/couchella'>Log in with Spotify</a>
-            <!-- uri for Github: https://marfriaz.github.io/couchella/ -->
-            <!-- uri for Github: http://127.0.0.1:5500/couchella/index.html -->
         </div>
     </section>
     
@@ -33,6 +30,15 @@
                 <h5 class="presented">Online Music Festival</h5>
             </div>
             <div class="user-lineup"><h3 class="goes-here">Your personal lineup goes here</h3></div>
+            <div id="editable-lineup-page" class="hidden">
+                <form id="edit-lineup-form">
+                    <label for="lineup-list-entry">Add an artist</label>
+                    <input type="text" name="lineup-entry" id="lineup-entry" placeholder="e.g., Doja Cat">
+                    <button class= "edit-button" type="submit">Add</button>
+                </form>
+                <ul class="artist-list" style="list-style-type: none;"></ul>
+                <button class="edit-button" id="generate-button" type="submit">Generate Festival</button>
+            </div>
         </div>
     </section>
 
@@ -54,7 +60,6 @@
     <section class="footer">
         <div><img src="https://image.flaticon.com/icons/svg/2890/2890408.svg"  width="50" height="50"></div>
     </section>
-
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

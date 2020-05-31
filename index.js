@@ -1,48 +1,30 @@
 'use strict';
 
-// Spotify API: get authentication and login: fix the Request URI to fit this:
+// Spotify API Login: 
+const loginBaseURL = 'https://accounts.spotify.com/authorize';
+const clientID = 'd3c3efee0eb04d5ea828f52d23aec551';
 
-// const loginBaseURL = 'https://accounts.spotify.com/authorize';
-// const clientID = 'd3c3efee0eb04d5ea828f52d23aec551';
+$(function getLogin() {
+  const params = {
+    client_id: clientID,
+    response_type: 'token',
+    // redirect uri must be updated on Spotify Dashboard: https://developer.spotify.com/dashboard/login
+    // redirect_uri for Github: https://marfriaz.github.io/couchella/
+    // redirect_uri for VS Code: http://127.0.0.1:5500/couchella/index.html
+    redirect_uri: 'http://127.0.0.1:5500/couchella/index.html',
+  };
 
+  const queryString = formatQueryParams(params);
+  const loginURL = loginBaseURL + '?' + queryString;
+  // console.log(loginURL);
 
-// const params = {
-//     //set the "q" parameter equal to the value the user input
-//     client_id: clientID,
-//     response_type: 'token',
-//     redirect_uri: 'http://127.0.0.1:5500/spotify-music-festival/index.html',
-// };
-
-// $('#spotify-login').html(`
-//     <a id="spotify-login" href="${loginURL}">Log in with Spotify</a>
-//     `);
-
-// function formatQueryParams(params) {
-//     const queryItems = Object.keys(params)
-//       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-//     return queryItems.join('&');
-//   }
-
-// function getLogin() {
-//     //create the query parameters
-//     const params = {
-//         //set the "q" parameter equal to the value the user input
-//         client_id: clientID,
-//         response_type: 'token',
-//         redirect_uri: 'https://www.google.com',
-//     };
-
-//     const queryString = formatQueryParams(params);
-//     const loginURL = loginBaseURL + '?' + queryString;
-
-//     console.log(loginURL);
-
-
-
+  $('.login-container').html(`
+    <a id="spotify-login" href="${loginURL}">Log in with Spotify</a>
+  `);
+})
 
 
 //Spotify API: Authentication
-
 var accessTokenValue = '';
 
 window.onload = function () {
@@ -71,7 +53,7 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-
+// uses Spotify API to attain user's most played artists
 function getArtists() {
   console.log(accessTokenValue);
   const params = {
@@ -90,7 +72,6 @@ function getArtists() {
     })
   };
 
-  
   fetch(url, options)
     .then(response => {
       if (response.ok) {
@@ -98,50 +79,131 @@ function getArtists() {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayLineup(responseJson) )
+    .then(responseJson => displayEditableLineup(responseJson) )
     .catch(err => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
+}
 
+// artists array that we'll be editing and displaying
+let artists= [];
+
+//displays initial lineup from user's most played artists
+function displayEditableLineup(responseJson) {
+  // if there are previous results, remove them
+  console.log(responseJson);
+  $('#editable-lineup-page').removeClass('hidden');
+
+  for (let i = 0; i < responseJson.items.length; i++){
+    artists[i] = responseJson.items[i].name
+  };
+    // console.log(artists);
+    renderArtists();
+  }
+ 
+
+// gets index of artist that had "delete" button clicked
+function getArtistIndexFromClicked(item) {
+  // turn item into a jQuery object
+  return $(item).data('index')
 }
 
 
-function displayLineup(responseJson) {
-  // if there are previous results, remove them
-  console.log(responseJson);
-  $('#user-lineup').empty();
-
-    $('.user-lineup').append(
-      `<h3 class="headliners">${responseJson.items[0].name} &nbsp ${responseJson.items[1].name}</h3>
-      `
-    );
-
-    $('.user-lineup').append(
-      `<h4 class="headliners">${responseJson.items[2].name} &nbsp ${responseJson.items[3].name} &nbsp ${responseJson.items[4].name}</h4>
-      `
-    );
-
-    $('.user-lineup').append(
-      `<h4 class="headliners">${responseJson.items[5].name} &nbsp ${responseJson.items[6].name} &nbsp ${responseJson.items[7].name} &nbsp ${responseJson.items[8].name}</h4>
-      `
-    );
-
-    $('.user-lineup').append(
-      `<h4 class="headliners">${responseJson.items[9].name} &nbsp ${responseJson.items[10].name} &nbsp ${responseJson.items[11].name}</h4>
-      `
-    );
+function deleteArtist() {
+  $('.artist-list').on('click','.artist-delete', event => {
+    event.preventDefault();
+    // console.log('clicked', $(event.currentTarget).data('index'));
+    const id = getArtistIndexFromClicked(event.currentTarget);
     
-    for (let i = 0; i < 12; i++) {
-      let query= responseJson.items[i].name + ' concert';
-      let headlinerName= responseJson.items[i].name;
+    artists.splice(id, 1);
+    renderArtists ();
+  })
+}
 
 
 
-      // COMMENT OUT TO NOW WASTE FETCH
-      getYouTubeVideos(query, headlinerName)
-    };
+function addArtist () {
+  $('#edit-lineup-form').submit(event => {
+    event.preventDefault();
+    let newArtistName = $('#lineup-entry').val();
+    if (newArtistName) {
+      artists.push(newArtistName);
+    }
+  renderArtists ();
+  });
+}
 
-};
+// render updated artists array and display on edit page
+function renderArtists () {
+  // create a string variable
+  let artistHTML = '';
+
+  for (let i = 0; i < artists.length; i++){
+    // appending and changing DOM is expensive
+    artistHTML +=
+      `<li>
+        <span class="editing-artist-name">${artists[i]}</span>
+        <button class="artist-delete edit-button" data-index="${i}">
+          <span class="button-label">delete</span>
+        </button>
+      </li>`;
+  }
+    $('.artist-list').html(artistHTML);
+
+}
+
+function generateFestival () {
+  $('#generate-button').on('click', function(event) {
+    event.preventDefault();
+    $('#editable-lineup-page').toggleClass('hidden');
+    console.log('clicked');
+
+    displayLineup(artists)
+
+  });
+  }
+
+$(deleteArtist);
+$(addArtist);
+$(generateFestival);
+
+
+  function displayLineup(artists) {
+    // if there are previous results, remove them
+    console.log(artists);
+    $('#user-lineup').empty();
+  
+      $('.user-lineup').append(
+        `<h3 class="headliners">${artists[0]} &nbsp ${artists[1]}</h3>
+        `
+      );
+  
+      $('.user-lineup').append(
+        `<h4 class="headliners">${artists[3]} &nbsp ${artists[4]} &nbsp ${artists[5]}</h4>
+        `
+      );
+  
+      $('.user-lineup').append(
+        `<h4 class="headliners">${artists[6]} &nbsp ${artists[7]} &nbsp ${artists[8]} &nbsp ${artists[9]}</h4>
+        `
+      );
+  
+      $('.user-lineup').append(
+        `<h4 class="headliners">${artists[10]} &nbsp ${artists[11]} &nbsp ${artists[12]}</h4>
+        `
+      );
+      
+      for (let i = 0; i < 12; i++) {
+        let query= responseJson.items[i].name + ' concert';
+        let headlinerName= responseJson.items[i].name;
+  
+        // COMMENT OUT TO NOW WASTE FETCH-----------
+        // getYouTubeVideos(query, headlinerName)
+      };
+  
+  };
+
+
 
 
 
@@ -202,7 +264,7 @@ function displayVideos(responseJson, headlinerName) {
   
   //display the results section  
   $('.videos-intro').removeClass('hidden');
-};
+}
 
 
 
@@ -210,3 +272,4 @@ function displayVideos(responseJson, headlinerName) {
 
 
 const videoURL = 'https://www.youtube.com/embed/VIDEO_ID';
+
