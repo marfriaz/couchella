@@ -1,69 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Create your own online music festival based on your most played artists on Spotify">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Create your own online music festival based on your most played artists on Spotify"
+    />
     <title>Couchella</title>
-    <link rel="stylesheet" type="text/css" href="main.css"/>
-</head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar">
-        <div><img src="https://image.flaticon.com/icons/svg/2890/2890408.svg"  width="50" height="50"></div>
-        <div class="name"><h1 class="app-name">Couchella</h1></div>
+      <div>
+        <img
+          src="https://image.flaticon.com/icons/svg/2890/2890408.svg"
+          width="50"
+          height="50"
+        />
+      </div>
+      <div class="name"><h1 class="app-name">Couchella</h1></div>
     </nav>
 
     <section class="sign-in">
-        <div class="intro">
-            Create your own online music festival based on your most played artists on Spotify
-            </div>
-        <div class="login-container">
-        </div>
-    </section>
-    
-    <section class="lineup-container">
-        <div class="lineup">
-            <div class="lineup-header">
-                <h5 class="presented">Your Spotify account presents<br></h5>
-                <h2 class="couchella"><b>COUCHELLA</b><br></h2>
-                <h5 class="presented">Online Music Festival</h5>
-            </div>
-            <div class="user-lineup"><h3 class="goes-here">Your personal lineup goes here</h3></div>
-            <div id="editable-lineup-page" class="hidden">
-                <form id="edit-lineup-form">
-                    <label for="lineup-list-entry">Add an artist</label>
-                    <input type="text" name="lineup-entry" id="lineup-entry" placeholder="e.g., Doja Cat">
-                    <button class= "edit-button" type="submit">Add</button>
-                </form>
-                <ul class="artist-list" style="list-style-type: none;"></ul>
-                <button class="edit-button" id="generate-button" type="submit">Generate Festival</button>
-            </div>
-        </div>
+      <div class="intro">
+        Create your own online music festival based on your most played artists
+        on Spotify
+      </div>
+      <div class="login-container">
+        <a id="spotify-login" href="${loginURL}">Log in with Spotify</a>
+        <!-- redirect uri must be updated on Spotify Dashboard: https://developer.spotify.com/dashboard/login
+        redirect_uri for Github: https://marfriaz.github.io/couchella/
+        redirect_uri for VS Code: http://127.0.0.1:5500/couchella/index.html -->
+      </div>
     </section>
 
+    <section class="lineup-container">
+      <div class="lineup">
+        <div class="lineup-header">
+          <h5 class="presented">Your Spotify account presents<br /></h5>
+          <h2 class="couchella"><b>COUCHELLA</b><br /></h2>
+          <h5 class="presented">Online Music Festival</h5>
+        </div>
+        <div class="user-lineup">
+          <h3 class="goes-here">Your personal lineup goes here</h3>
+        </div>
+        <div id="editable-lineup-page" class="hidden">
+          <form id="edit-lineup-form">
+            <label for="lineup-list-entry">Add an artist</label>
+            <input
+              type="text"
+              name="lineup-entry"
+              id="lineup-entry"
+              placeholder="e.g., Doja Cat"
+            />
+            <button class="edit-button" type="submit">Add</button>
+          </form>
+          <ul class="artist-list" style="list-style-type: none;"></ul>
+          <button class="edit-button" id="generate-button" type="submit">
+            Generate Festival
+          </button>
+        </div>
+      </div>
+    </section>
 
     <section id="video-results">
-        <h2 class="videos-intro hidden">YOUR PERSONAL ONLINE MUSIC FESTIVAL</h2>
-        
-        <ul id="videos-list" style="list-style-type: none;">
-            <!-- <li class="artist-vid"><h3 class="artist-name">The Weekend</h3>
+      <h2 class="videos-intro hidden">YOUR PERSONAL ONLINE MUSIC FESTIVAL</h2>
+
+      <ul id="videos-list" style="list-style-type: none;">
+        <!-- <li class="artist-vid"><h3 class="artist-name">The Weekend</h3>
                 <iframe src="https://www.youtube.com/embed/1DpH-icPpl0" name="The Weeknd" frameborder="0" allowfullscreen></iframe>
             </li>
             <li><h3 class="artist-name">The Weekend</h3>
                 <iframe src="https://www.youtube.com/embed/1DpH-icPpl0" name="The Weeknd" frameborder="0" allowfullscreen></iframe>
             </li> -->
-        </ul>
-
-      </section>
-
-    <section class="footer">
-        <div><img src="https://image.flaticon.com/icons/svg/2890/2890408.svg"  width="50" height="50"></div>
+      </ul>
     </section>
 
+    <section class="footer">
+      <div>
+        <img
+          src="https://image.flaticon.com/icons/svg/2890/2890408.svg"
+          width="50"
+          height="50"
+        />
+      </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
-
