@@ -11,13 +11,12 @@ $(function getLogin() {
     // redirect uri must be updated on Spotify Dashboard: https://developer.spotify.com/dashboard/login
     // redirect_uri for Github: https://marfriaz.github.io/couchella/
     // redirect_uri for VS Code: http://127.0.0.1:5500/couchella/index.html
-    redirect_uri: "http://127.0.0.1:5500/couchella/index.html",
+    redirect_uri: "https://marfriaz.github.io/couchella/",
   };
 
   const queryString = formatQueryParams(params);
   const loginURL = loginBaseURL + "?" + queryString;
   // console.log(loginURL);
-  https://accounts.spotify.com/authorize?
 
   $(".login-container").html(`
     <a id="spotify-login" href="${loginURL}">Log in with Spotify</a>
@@ -171,17 +170,33 @@ function displayLineup(artists) {
   console.log(artists);
   $("#user-lineup").empty();
 
+  // How to make conditional: if two strings fit on line, display on line;
+  // otherwise, display on new line
+
   $(".user-lineup").append(
     `<h3 class="headliners">${artists[0]} &nbsp ${artists[1]}</h3>
-        `
+     <h4 class="headliners subliners"></h4>`
   );
 
-  for (let i = 2; i < artists.length; i++) {
-
-  $(".user-lineup").append(
-    `<h4 class="headliners">${artists[i]} &nbsp ${artists[i+1]}</h4>
+  for (let i = 2; i < artists.length - 1; i++) {
+    if (i === artists.length - 2) {
+      $(".subliners").append(
+        `${artists[i]}
+          `
+      );
+    } else {
+      $(".subliners").append(
+        `${artists[i]} &nbsp;
         `
-  );
+      );
+    }
+  }
+
+  for (let i = artists.length - 1; i < artists.length; i++) {
+    $(".user-lineup").append(
+      `<h4 class="headliners subliners">${artists[i]}</h4>`
+    );
+  }
 
   // $(".user-lineup").append(
   //   `<h4 class="headliners">${artists[6]} &nbsp ${artists[7]} &nbsp ${artists[8]} &nbsp ${artists[9]}</h4>
@@ -193,18 +208,18 @@ function displayLineup(artists) {
   //       `
   // );
 
-  for (let i = 0; i < 12; i++) {
-    let query = responseJson.items[i].name + " concert";
-    let headlinerName = responseJson.items[i].name;
+  for (let i = 0; i < artists.length; i++) {
+    let query = artists[i] + " concert";
+    let headlinerName = artists[i];
 
     // COMMENT OUT TO NOW WASTE FETCH-----------
-    // getYouTubeVideos(query, headlinerName)
+    getYouTubeVideos(query, headlinerName);
   }
 }
 
 // YOUTUBE API: SEARCH
 
-const apiKey = "AIzaSyAJWZSpZ9AhqlYkso42fSUdWXQQcJvAjuk";
+const apiKey = "AIzaSyDmQe1d9Vyo5-F1ox7-UMeDLprbwjnDtFw";
 const searchURL = "https://www.googleapis.com/youtube/v3/search";
 
 function formatQueryParams(params) {
@@ -242,18 +257,11 @@ function getYouTubeVideos(query, headlinerName, maxResults = 1) {
 }
 
 function displayVideos(responseJson, headlinerName) {
-  // if there are previous results, remove them
-  console.log(responseJson, headlinerName);
   $("#videos-list").append(
     `<li><h3 class="artist-name">${headlinerName}</h3>
       <iframe src="https://www.youtube.com/embed/${responseJson.items[0].id.videoId}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
       </li>`
   );
-
   //display the results section
   $(".videos-intro").removeClass("hidden");
 }
-
-// YOUTUBE API: VIDEOS
-
-const videoURL = "https://www.youtube.com/embed/VIDEO_ID";

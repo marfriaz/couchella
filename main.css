@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+ul.artist-list {
+  padding: 0%;
+  font-size: 0;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+li {
+  font-size: 16px;
+}
+
 .hidden {
   display: none;
 }
@@ -65,30 +76,49 @@ h4 {
   margin: 0 5% 0 5%;
 }
 
-#spotify-login {
-  background-color: #1db954;
-  color: #ffffff;
+#spotify-login,
+#generate-button {
   font-size: 14px;
-  border-radius: 500px;
-  border: 0;
   padding: 12px 27px;
 }
 
-.videos-intro {
-  margin-top: 2%;
+#spotify-login {
+  background-color: #1db954;
+  color: #ffffff;
+  border: 0;
+  border-radius: 500px;
+}
+
+#generate-button {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#lineup-entry {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.edit-button {
+  color: white;
+  background: #9c85b9;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .lineup-container {
   display: flex;
   justify-content: center;
   /* Edit this height */
-  height: 450px;
+  min-height: 450px;
+  height: 100%;
 }
 
 .lineup {
   margin-top: 5%;
   background: url("Images/lineup-background.png") no-repeat;
   background-size: cover;
+  min-height: 450px;
   height: 90%;
   width: 90%;
   color: white;
@@ -104,6 +134,7 @@ h4 {
 
 .videos-intro {
   width: 90%;
+  margin-top: 2%;
 }
 
 #video-results {
@@ -156,11 +187,27 @@ iframe {
     font-size: 1.2em;
   }
 
+  #spotify-login,
+  #generate-button {
+    font-size: 0.7em;
+    padding: 12px 27px;
+  }
+
   #spotify-login {
-    font-size: 14px;
-    border-radius: 500px;
-    border: 0;
     padding: 17px 48px;
+  }
+
+  #lineup-entry {
+    height: 2.2em;
+  }
+
+  .edit-button {
+    font-size: 0.7em;
+  }
+
+  #editable-lineup-page,
+  li {
+    font-size: 30px;
   }
 
   .lineup-container {
@@ -173,8 +220,8 @@ iframe {
     min-height: 900px;
   }
 
-  li {
-    width: 80%;
+  .artist-vid {
+    width: 100%;
     height: 100%;
   }
 
@@ -184,29 +231,51 @@ iframe {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1500px) {
   .intro {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    margin-bottom: 2%;
   }
 
   .presented {
-    font-size: 1.2em;
+    font-size: 1.8em;
   }
 
+  .lineup {
+    margin-top: 2%;
+  }
   h3.headliners {
+    font-size: 6em;
+  }
+
+  h3.subliners,
+  .couchella {
     font-size: 4em;
   }
 
-  h4.headliners,
-  .couchella {
-    font-size: 3em;
+  #spotify-login,
+  #generate-button {
+    font-size: 0.9em;
+    padding: 12px 27px;
   }
 
   #spotify-login {
-    font-size: 14px;
-    border-radius: 500px;
-    border: 0;
     padding: 17px 48px;
+  }
+
+  #lineup-entry {
+    height: 2.8em;
+    padding-top: 5px;
+    font-size: 20px;
+  }
+
+  .edit-button {
+    font-size: 0.8em;
+  }
+
+  #editable-lineup-page,
+  li {
+    font-size: 50px;
   }
 
   .lineup-container {
@@ -215,12 +284,12 @@ iframe {
   }
 
   .lineup {
-    width: 55%;
-    min-height: 900px;
+    width: 50%;
+    min-height: 1000px;
   }
 
-  li {
-    width: 80%;
+  .artist-vid {
+    width: 70%;
     height: 100%;
   }
 
