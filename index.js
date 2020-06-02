@@ -219,7 +219,7 @@ function displayLineup(artists) {
 
 // YOUTUBE API: SEARCH
 
-const apiKey = "AIzaSyDmQe1d9Vyo5-F1ox7-UMeDLprbwjnDtFw";
+const apiKey = "AIzaSyBk_IPBrTBcHe8UVeQflD4Zrz9i5wYts3g";
 const searchURL = "https://www.googleapis.com/youtube/v3/search";
 
 function formatQueryParams(params) {
