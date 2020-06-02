@@ -32,6 +32,6 @@ I love Spotify and I’m fascinated by their end of the year “Wrapped Statisti
 - Edit Artists Page: <br />
   ![edit artists page](Images/edit.png)
 
-- Poster Page/ Embedded Youtube Concert Videos:
+- Poster Page/ Embedded Youtube Concert Videos: <br />
   ![poster and videos page](Images/rendered.png)
   ![poster and videos page](Images/rendered2.png)
