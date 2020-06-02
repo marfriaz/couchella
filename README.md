@@ -14,18 +14,6 @@ I love Spotify and I’m fascinated by their end of the year “Wrapped Statisti
 
 - [Couchella Wirefreame](https://drive.google.com/file/d/1nfSrB5rBAZPYpeEGhOhjQHReCrgew3QT/view?usp=sharing)
 
-## Screenshots
-
-- Login Screen/Landing Page:
-  ![login screen](Images/login.png)
-
-- Edit Artists Page:
-  ![edit artists page](Images/edit.png)
-
-- Music Festival Lineup Poster Page/ Embedded Youtube Concert Videos:
-  ![poster and videos page](Images/rendered.png)
-  ![poster and videos page](Images/rendered2.png)
-
 ## Features
 
 - Attain your 12 most played artists on Spotify
@@ -35,3 +23,15 @@ I love Spotify and I’m fascinated by their end of the year “Wrapped Statisti
 ## Demo
 
 - [Live Demo](https://marfriaz.github.io/couchella/)
+
+## Screenshots
+
+- Login Screen/Landing Page: <br />
+  ![login screen](Images/login.png)
+
+- Edit Artists Page: <br />
+  ![edit artists page](Images/edit.png)
+
+- Poster Page/ Embedded Youtube Concert Videos:
+  ![poster and videos page](Images/rendered.png)
+  ![poster and videos page](Images/rendered2.png)
