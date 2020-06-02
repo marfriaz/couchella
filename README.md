@@ -8,7 +8,7 @@ I love Spotify and I’m fascinated by their end of the year “Wrapped Statisti
 
 ## Built With:
 
-HTML, CSS, Javascript and JQuery
+- HTML, CSS, Javascript and JQuery
 
 ## Initial Wireframes:
 
@@ -16,20 +16,21 @@ HTML, CSS, Javascript and JQuery
 
 ## Screenshots
 
-Login Screen/Landing Page:
-![login screen](images/login.png)
+- Login Screen/Landing Page:
+  ![login screen](Images/login.png)
 
-Edit Artists Page:
-![edit artists page](images/edit.png)
+- Edit Artists Page:
+  ![edit artists page](Images/edit.png)
 
-Artist Lineup Poster Page/ Embedded Youtube Concert Videos:
-![poster and videos page](images/lineup.png)
+- Music Festival Lineup Poster Page/ Embedded Youtube Concert Videos:
+  ![poster and videos page](Images/rendered.png)
+  ![poster and videos page](Images/rendered2.png)
 
 ## Features
 
 - Attain your 12 most played artists on Spotify
-- Edit the list of artists you want to be displayed on the artists lineup poster
-- See final artists lineup poster and concert videos of those artists
+- Edit the list of artists you want displayed on the music festival lineup poster
+- See final music festival lineup poster and concert videos of the artists
 
 ## Demo
 
