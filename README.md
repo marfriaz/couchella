@@ -1,6 +1,6 @@
 # Couchella
 
-Users can create their ideal online musical lineup poster and watch embedded videos of music concerts. This web app utilizes the Spotify API to attain the user’s most played artists and the Youtube API to display concert videos of those artists.
+Users can create their ideal online music festival lineup poster and watch embedded videos of music concerts. This web app utilizes the Spotify API to attain the user’s most played artists and the Youtube API to display concert videos of those artists.
 
 ## Motivation
 
@@ -17,10 +17,13 @@ HTML, CSS, Javascript and JQuery
 ## Screenshots
 
 Login Screen/Landing Page:
+![login screen](images/login.png)
 
 Edit Artists Page:
+![edit artists page](images/edit.png)
 
 Artist Lineup Poster Page/ Embedded Youtube Concert Videos:
+![poster and videos page](images/lineup.png)
 
 ## Features
 
