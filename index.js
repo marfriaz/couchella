@@ -38,9 +38,6 @@ window.onload = function () {
       .split("&")
       .map((param) => param.split("="))[0][1];
 
-    //   var authObj={};
-    //   authObj[accessToken]=location.hash.substring(1).split('&').map(param=>param.split('='))[0][1];
-    // return authObj;
     getArtists();
     $(".sign-in").hide();
     $(".goes-here").hide();
@@ -140,7 +137,6 @@ function renderArtists() {
   let artistHTML = "";
 
   for (let i = 0; i < artists.length; i++) {
-    // appending and changing DOM is expensive
     artistHTML += `<li>
         <span class="editing-artist-name">${artists[i]}</span>
         <button class="artist-delete edit-button" data-index="${i}">
@@ -166,12 +162,8 @@ $(addArtist);
 $(generateFestival);
 
 function displayLineup(artists) {
-  // if there are previous results, remove them
   console.log(artists);
   $("#user-lineup").empty();
-
-  // How to make conditional: if two strings fit on line, display on line;
-  // otherwise, display on new line
 
   $(".user-lineup").append(
     `<h3 class="headliners">${artists[0]} &nbsp ${artists[1]}</h3>
@@ -198,16 +190,6 @@ function displayLineup(artists) {
     );
   }
 
-  // $(".user-lineup").append(
-  //   `<h4 class="headliners">${artists[6]} &nbsp ${artists[7]} &nbsp ${artists[8]} &nbsp ${artists[9]}</h4>
-  //       `
-  // );
-
-  // $(".user-lineup").append(
-  //   `<h4 class="headliners">${artists[10]} &nbsp ${artists[11]} &nbsp ${artists[12]}</h4>
-  //       `
-  // );
-
   for (let i = 0; i < artists.length; i++) {
     let query = artists[i] + " concert";
     let headlinerName = artists[i];
@@ -219,7 +201,7 @@ function displayLineup(artists) {
 
 // YOUTUBE API: SEARCH
 
-const apiKey = "AIzaSyBk_IPBrTBcHe8UVeQflD4Zrz9i5wYts3g";
+const apiKey = "AIzaSyAu7_Kc26uxRz6bC0J20bDQOEmVXx3-PAY";
 const searchURL = "https://www.googleapis.com/youtube/v3/search";
 
 function formatQueryParams(params) {
@@ -252,7 +234,7 @@ function getYouTubeVideos(query, headlinerName, maxResults = 1) {
     })
     .then((responseJson) => displayVideos(responseJson, headlinerName))
     .catch((err) => {
-      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+      $("#video-results").text(`Something went wrong: ${err.message}`);
     });
 }
 

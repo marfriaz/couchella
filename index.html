@@ -30,16 +30,7 @@
         Create your own online music festival based on your most played artists
         on Spotify
       </div>
-      <div class="login-container">
-        <!-- <a
-          id="spotify-login"
-          href="https://accounts.spotify.com/authorize?scope=user-top-read&client_id=d3c3efee0eb04d5ea828f52d23aec551&response_type=token&redirect_uri=http://127.0.0.1:5500/couchella/index.html"
-          >Login With Spotify</a
-        > -->
-        <!-- redirect uri must be updated on Spotify Dashboard: https://developer.spotify.com/dashboard/login
-        redirect_uri for Github: https://marfriaz.github.io/couchella/
-        redirect_uri for VS Code: http://127.0.0.1:5500/couchella/index.html -->
-      </div>
+      <div class="login-container"></div>
     </section>
 
     <section class="lineup-container">
@@ -54,7 +45,7 @@
         </div>
         <div id="editable-lineup-page" class="hidden">
           <form id="edit-lineup-form">
-            <label for="lineup-list-entry">Add an artist</label>
+            <label for="lineup-entry">Add an artist</label>
             <input
               type="text"
               name="lineup-entry"
@@ -74,32 +65,14 @@
     <section id="video-results">
       <h2 class="videos-intro hidden">YOUR PERSONAL ONLINE MUSIC FESTIVAL</h2>
 
-      <ul id="videos-list" style="list-style-type: none;">
-        <!-- <li class="artist-vid">
-          <h3 class="artist-name">The Weekend</h3>
-          <iframe
-            src="https://www.youtube.com/embed/1DpH-icPpl0"
-            name="The Weeknd"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </li>
-        <li class="artist-vid">
-          <h3 class="artist-name">The Weekend</h3>
-          <iframe
-            src="https://www.youtube.com/embed/1DpH-icPpl0"
-            name="The Weeknd"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </li> -->
-      </ul>
+      <ul id="videos-list" style="list-style-type: none;"></ul>
     </section>
 
     <section class="footer">
       <div>
         <img
           src="https://image.flaticon.com/icons/svg/2890/2890408.svg"
+          alt="man on couch logo"
           width="50"
           height="50"
         />
