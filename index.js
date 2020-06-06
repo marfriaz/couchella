@@ -8,6 +8,7 @@ $(function getLogin() {
   const params = {
     client_id: clientID,
     response_type: "token",
+    scope: "user-top-read",
     // redirect uri must be updated on Spotify Dashboard: https://developer.spotify.com/dashboard/login
     // redirect_uri for Github: https://marfriaz.github.io/couchella/
     // redirect_uri for VS Code: http://127.0.0.1:5500/couchella/index.html
@@ -66,7 +67,7 @@ function getArtists() {
   const queryString = formatQueryParams(params);
   const url = baseURL + "?" + queryString;
 
-  console.log(baseURL);
+  console.log(accessTokenValue);
 
   const options = {
     headers: new Headers({
