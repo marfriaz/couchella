@@ -203,7 +203,7 @@ function displayLineup(artists) {
     let headlinerName = artists[i];
 
     // COMMENT OUT TO NOW WASTE FETCH-----------
-    // getYouTubeVideos(query, headlinerName);
+    getYouTubeVideos(query, headlinerName);
   }
 }
 
