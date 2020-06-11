@@ -17,7 +17,8 @@ $(function getLogin() {
 
   const queryString = formatQueryParams(params);
   const loginURL = loginBaseURL + "?" + queryString;
-  // console.log(loginURL);
+
+  console.log(loginURL);
 
   $(".login-container").html(`
     <a id="spotify-login" href="${loginURL}">Log in with Spotify</a>
@@ -100,7 +101,7 @@ function displayEditableLineup(responseJson) {
   for (let i = 0; i < responseJson.items.length; i++) {
     artists[i] = responseJson.items[i].name;
   }
-  // console.log(artists);
+  console.log(artists);
   renderArtists();
 }
 
@@ -113,7 +114,7 @@ function getArtistIndexFromClicked(item) {
 function deleteArtist() {
   $(".artist-list").on("click", ".artist-delete", (event) => {
     event.preventDefault();
-    // console.log('clicked', $(event.currentTarget).data('index'));
+    console.log("clicked", $(event.currentTarget).data("index"));
     const id = getArtistIndexFromClicked(event.currentTarget);
 
     artists.splice(id, 1);
@@ -137,13 +138,18 @@ function renderArtists() {
   // create a string variable
   let artistHTML = "";
 
-  for (let i = 0; i < artists.length; i++) {
-    artistHTML += `<li>
+  if (artists.length === 0) {
+    artistHTML = `
+    <li><span class="editing-artist-name">Your Spotify Account can't find you're most played artists. </br> Please add some :)</span></li>`;
+  } else {
+    for (let i = 0; i < artists.length; i++) {
+      artistHTML += `<li>
         <span class="editing-artist-name">${artists[i]}</span>
         <button class="artist-delete edit-button" data-index="${i}">
           <span class="button-label">delete</span>
         </button>
       </li>`;
+    }
   }
   $(".artist-list").html(artistHTML);
 }
@@ -165,10 +171,11 @@ $(generateFestival);
 function displayLineup(artists) {
   console.log(artists);
   $("#user-lineup").empty();
+  $("#update-lineup").removeClass("hidden");
 
   $(".user-lineup").append(
     `<h3 class="headliners">${artists[0]} &nbsp ${artists[1]}</h3>
-     <h4 class="headliners subliners"></h4>`
+    <h4 class="headliners subliners"></h4>`
   );
 
   for (let i = 2; i < artists.length - 1; i++) {
@@ -196,7 +203,7 @@ function displayLineup(artists) {
     let headlinerName = artists[i];
 
     // COMMENT OUT TO NOW WASTE FETCH-----------
-    getYouTubeVideos(query, headlinerName);
+    // getYouTubeVideos(query, headlinerName);
   }
 }
 

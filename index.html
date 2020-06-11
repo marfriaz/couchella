@@ -18,8 +18,6 @@
           class="logo"
           src="https://image.flaticon.com/icons/svg/2890/2890408.svg"
           alt="man on couch logo"
-          width="50"
-          height="50"
         />
       </div>
       <div class="name"><h1 class="app-name">Couchella</h1></div>
@@ -27,8 +25,10 @@
 
     <section class="sign-in">
       <div class="intro">
-        Create your own online music festival based on your most played artists
-        on Spotify
+        <p>
+          Create your own online music festival based on your most played
+          artists on Spotify
+        </p>
       </div>
       <div class="login-container"></div>
     </section>
@@ -36,9 +36,13 @@
     <section class="lineup-container">
       <div class="lineup">
         <div class="lineup-header">
-          <h5 class="presented">Your Spotify account presents<br /></h5>
-          <h2 class="couchella"><b>COUCHELLA</b><br /></h2>
-          <h5 class="presented">Online Music Festival</h5>
+          <h2 class>
+            <span class="presented">Your Spotify account presents</span>
+            <br />
+            <span class="couchella"><b>COUCHELLA</b></span
+            ><br />
+            <span class="presented">Online Music Festival</span>
+          </h2>
         </div>
         <div class="user-lineup">
           <h3 class="goes-here">Your personal lineup goes here</h3>
@@ -54,7 +58,7 @@
             />
             <button class="edit-button" type="submit">Add</button>
           </form>
-          <ul class="artist-list" style="list-style-type: none;"></ul>
+          <ul class="artist-list"></ul>
           <button class="edit-button" id="generate-button" type="submit">
             Generate Festival
           </button>
@@ -67,11 +71,20 @@
 
       <ul id="videos-list" style="list-style-type: none;"></ul>
     </section>
+    <button
+      class="edit-button hidden"
+      id="update-lineup"
+      onClick="window.location.reload();"
+      type="submit"
+    >
+      Update Lineup
+    </button>
 
     <section class="footer">
       <div>
         <img
           src="https://image.flaticon.com/icons/svg/2890/2890408.svg"
+          class="logo"
           alt="man on couch logo"
           width="50"
           height="50"

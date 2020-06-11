@@ -2,7 +2,33 @@
   box-sizing: border-box;
 }
 
+.navbar {
+  /* background: linear-gradient(to left, #65c9b7, #cfb98a 33%, #9c85b9 100%); */
+  background-color: #9c85b9;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  position: relative;
+  text-align: left;
+  left: 1%;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 ul.artist-list {
+  list-style-type: none;
   padding: 0%;
   font-size: 0;
   margin-top: 2%;
@@ -35,28 +61,20 @@ h2 {
   font-size: 1.5em;
 }
 
+.presented {
+  font-size: 0.5em;
+}
+
+.lineup-header {
+  line-height: 1.2;
+}
+
 h1,
-h5,
 h2,
 h3,
 h4 {
   margin-block-start: 0;
   margin-block-end: 0;
-}
-
-.navbar {
-  /* background: linear-gradient(to left, #65c9b7, #cfb98a 33%, #9c85b9 100%); */
-  background-color: #9c85b9;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.name {
-  position: relative;
-  text-align: left;
-  left: 1%;
 }
 
 .intro {
@@ -79,7 +97,7 @@ h4 {
 }
 
 #spotify-login {
-  background-color: #1db954;
+  background-color: #25b91d;
   color: #ffffff;
   border: 0;
   border-radius: 500px;
@@ -88,6 +106,12 @@ h4 {
 #generate-button {
   margin-top: 3%;
   margin-bottom: 3%;
+}
+
+#update-lineup {
+  font-size: 0.9em;
+  padding: 10px 23px;
+  margin-bottom: 5%;
 }
 
 #lineup-entry {
@@ -174,6 +198,7 @@ iframe {
   }
 
   h4.headliners,
+  h3.goes-here,
   .couchella {
     font-size: 3em;
   }
@@ -187,6 +212,12 @@ iframe {
   #generate-button {
     font-size: 0.7em;
     padding: 12px 27px;
+  }
+
+  #update-lineup {
+    font-size: 1.5em;
+    padding: 12px 27px;
+    margin-bottom: 3%;
   }
 
   #spotify-login {
@@ -228,18 +259,28 @@ iframe {
 }
 
 @media (min-width: 1500px) {
+  .logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  .name {
+    font-size: 2em;
+  }
+
   .intro {
     font-size: 1.8em;
     margin-bottom: 2%;
   }
 
   .presented {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
 
   .lineup {
     margin-top: 2%;
   }
+
   h3.headliners {
     font-size: 6em;
   }
@@ -253,6 +294,12 @@ iframe {
   #generate-button {
     font-size: 0.9em;
     padding: 12px 27px;
+  }
+
+  #update-lineup {
+    font-size: 1.8em;
+    padding: 12px 27px;
+    margin-bottom: 1%;
   }
 
   #spotify-login {

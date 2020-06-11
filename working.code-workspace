@@ -1,0 +1,16 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../../FullStack"
+	},
+	{
+		"path": "../my-portfolio"
+	}
+],
+"settings": {
+	"liveServer.settings.multiRootWorkspaceName": "FullStack"
+}
+}
